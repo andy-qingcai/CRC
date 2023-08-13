@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "crc.h"
 
 #define FOR_EACH_BIT(num,bitIter)  for(int bitIter=0;bitIter<sizeof(num)*8;bitIter++)
 
@@ -28,9 +28,3 @@ uint8_t crc8(void *data,int size,uint8_t crc)
     if(crcresult&(0x01<<7)) crcresult^=crc;
     return crcresult;
 };
-
-int main(){
-    uint8_t data[]={0xc5,0xff,0xc6};
-    uint8_t result=crc8(data,sizeof(data),0x89);
-    printf("%x \n",result);
-}
